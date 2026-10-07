@@ -1,3 +1,8 @@
+> ## 👋 Start Here
+> A cybersecurity learning repository. **For users:** treat it as a controlled security-lab project and never test networks or credentials without permission.
+
+---
+
 # 📶 WiFi Password Exporter
 
 A lightweight Windows batch script that digs through your PC's saved WiFi profiles and pulls out the network names *and* their passwords — no extra software, no internet connection, just built-in Windows tools.
