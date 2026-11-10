@@ -1,36 +1,26 @@
 @echo off
-setlocal enabledelayedexpansion
+setlocal
+title Wi-Fi Password Security Demo
 
-set "outfile=%~dp0WiFi_Passwords.txt"
+set "datafile=%~dp0WiFi_Passwords.txt"
 
-echo Saved WiFi Networks and Passwords > "%outfile%"
-echo Generated: %date% %time% >> "%outfile%"
-echo ===================================== >> "%outfile%"
-echo. >> "%outfile%"
+echo ==========================================
+echo   WI-FI PASSWORD SECURITY - DEMO MODE
+echo ==========================================
+echo.
+echo This is an offline science-fair demonstration.
+echo It does not scan networks or collect credentials.
+echo.
 
-for /f "tokens=2 delims=:" %%a in ('netsh wlan show profiles ^| findstr /c:"All User Profile"') do (
-    set "profile=%%a"
-    set "profile=!profile:~1!"
-
-    echo Network: !profile! >> "%outfile%"
-
-    for /f "tokens=2 delims=:" %%b in ('netsh wlan show profile name^="!profile!" key^=clear ^| findstr /c:"Key Content"') do (
-        set "password=%%b"
-        set "password=!password:~1!"
-        echo Password: !password! >> "%outfile%"
-    )
-
-    netsh wlan show profile name="!profile!" key=clear | findstr /c:"Key Content" >nul
-    if errorlevel 1 (
-        echo Password: ^(none / open network^) >> "%outfile%"
-    )
-
-    echo ------------------------------------- >> "%outfile%"
+if not exist "%datafile%" (
+    echo ERROR: WiFi_Passwords.txt was not found.
+    echo Keep it in the same folder as this batch file.
+    pause
+    exit /b 1
 )
 
+echo Opening fictional sample dataset...
+start "" notepad "%datafile%"
 echo.
-echo Done! Results saved to:
-echo %outfile%
-echo.
-start "" notepad "%outfile%"
+echo No network access was performed.
 pause
