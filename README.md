@@ -1,63 +1,44 @@
-> ## 👋 Start Here
-> A cybersecurity learning repository. **For users:** treat it as a controlled security-lab project and never test networks or credentials without permission.
+# Wi-Fi Password Security — Science Fair Demo
 
----
+An offline educational project about password strength. This repository uses **fictional sample data only**.
 
-# 📶 WiFi Password Exporter
+## Safety and scope
 
-A lightweight Windows batch script that digs through your PC's saved WiFi profiles and pulls out the network names *and* their passwords — no extra software, no internet connection, just built-in Windows tools.
+- Does not scan nearby Wi-Fi networks.
+- Does not reveal, collect, store, or export saved Wi-Fi passwords.
+- Does not attempt to guess or crack credentials.
+- Does not connect to any network.
+- All sample strings are invented and prefixed with `DEMO-ONLY-`.
 
-## ✨ Features
+Only use the project as an offline classroom demonstration.
 
-- 🔍 Scans **all saved WiFi profiles** on your PC
-- 🔑 Extracts the password (key) for each network
-- 📝 Saves everything to a clean, readable `WiFi_Passwords.txt`
-- 🚀 Auto-opens the results in Notepad when done
-- 🛠️ Zero dependencies — pure `netsh` + batch scripting
+## Files
 
-## 📂 What's Inside
+| File | Purpose |
+|---|---|
+| `scan.bat` | Opens the local demonstration dataset in Notepad. It performs no network scan. |
+| `WiFi_Passwords.txt` | Fictional sample dataset for comparing password characteristics. |
 
-| File | Description |
-|------|-------------|
-| `WiFi_Passwords.bat` | The script you double-click to run |
-| `WiFi_Passwords.txt` | Generated output (created after running) |
+## How to run
 
-## 🚀 How to Use
+1. Download both files into the same folder.
+2. Double-click `scan.bat`.
+3. Review the fictional samples in `WiFi_Passwords.txt`.
+4. Compare length, repeated characters, predictable sequences, and multi-word phrases.
+5. Record observations for your science fair display.
 
-1. Download `WiFi_Passwords.bat` and place it anywhere (Desktop, USB stick, etc.)
-2. **Right-click → Run as administrator** *(recommended — some passwords won't show without it)*
-3. A console window will flash by while it scans your saved networks
-4. `WiFi_Passwords.txt` opens automatically with your results
+## Suggested experiment
 
-## 📄 Sample Output
+**Question:** How do password length and predictability affect estimated password strength?
 
-```
-Saved WiFi Networks and Passwords
-Generated: Tue 06/30/2026 14:32:10
-=====================================
+**Independent variables:** Sample length and pattern type.
 
-Network: HomeNetwork_5G
-Password: SuperSecret123!
--------------------------------------
+**Dependent variable:** The strength category reported by an offline password-strength estimator.
 
-Network: OfficeGuestWiFi
-Password: (none / open network)
--------------------------------------
-```
+**Controls:** Use the same estimator and settings for every fictional sample. Do not submit real passwords or test any sample against a Wi-Fi network.
 
-## ⚠️ Important Notes
+**Important:** The ratings in the text file are illustrative starting labels, not measured results. Record the estimator's actual output separately and explain the method you used.
 
-> **This script only reveals passwords for networks your computer has already connected to and saved.** It cannot crack or reveal passwords for networks you've never joined.
+## Responsible use
 
-- 🔐 **Treat the output file like a password!** It contains real, plain-text credentials.
-- 🗑️ Delete `WiFi_Passwords.txt` once you're done with it — don't leave it lying around.
-- 🖥️ Works on Windows 7/8/10/11 (anywhere `netsh wlan` is supported).
-- 👮 Use this only on your **own devices/networks**. Running this on a computer you don't own or have permission to access is not okay.
-
-## 🧠 How It Works
-
-Under the hood, the script loops through Windows' `netsh wlan show profiles` output to list every saved network, then queries each one individually with `netsh wlan show profile name="X" key=clear` to reveal the stored key. It's the same data you could pull manually via Command Prompt — this just automates and formats it nicely.
-
-## 📜 License
-
-Free to use, modify, and share. No warranty — use responsibly.
+Never collect or share real passwords. Never test a network unless you own it and have explicit permission. This project is designed to teach defensive password practices, not credential recovery.
